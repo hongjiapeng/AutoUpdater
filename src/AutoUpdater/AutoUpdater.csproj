@@ -57,16 +57,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ViewModels\UpdateBulletinViewModel.cs" />
-    <Compile Include="Views\FileManagementView.xaml.cs">
-      <DependentUpon>FileManagementView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\InstallView.xaml.cs">
-      <DependentUpon>InstallView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UpdateBulletinView.xaml.cs">
-      <DependentUpon>UpdateBulletinView.xaml</DependentUpon>
-    </Compile>
     <Page Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -95,18 +85,6 @@
     <Page Include="Styles\MetroProgressBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\FileManagementView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\InstallView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\UpdateBulletinView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
