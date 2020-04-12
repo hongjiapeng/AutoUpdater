@@ -215,7 +215,7 @@ namespace AutoUpdater.ViewModels
             var filePath = UpdateInfo.TempPath + UpdateInfo.FileName;
             StatusDescription = "安全校验...";
             if (!VerifyFileMd5(filePath)) return;
-   
+
             //解压
             StatusDescription = " 正在解压...";
             ZipFile.ExtractToDirectory(filePath, UpdateInfo.TempPath);
@@ -226,9 +226,9 @@ namespace AutoUpdater.ViewModels
             //更新
             StatusDescription = " 正在更新...";
             IsCopying = true;
-            Utility.DirectoryCopy(UpdateInfo.TempPath, UpdateInfo.UnpackPath, 
+            Utility.DirectoryCopy(UpdateInfo.TempPath, UpdateInfo.UnpackPath,
                 true, true, o => InstallFileName = o);
-            Utility.UpdateReg(Registry.LocalMachine, SubKey, "DisplayVersion", 
+            Utility.UpdateReg(Registry.LocalMachine, SubKey, "DisplayVersion",
                 UpdateInfo.NewVersion);
             ExecuteStrategy();
             IsCopying = false;
@@ -237,17 +237,17 @@ namespace AutoUpdater.ViewModels
             //启动平台
             StatusDescription = " 启动平台...";
             Directory.Delete(UpdateInfo.TempPath, true);
-            Loger.Print(string.Format("update version {0} to {1} succeeded. ", 
+            Loger.Print(string.Format("update version {0} to {1} succeeded. ",
                 UpdateInfo.CurrentVersion, UpdateInfo.NewVersion));
             Thread.Sleep(500);
-            Process.Start(UpdateInfo.UnpackPath + "/Platform.exe");
+            Process.Start(UpdateInfo.UnpackPath + "/WpfAppTest.exe");
             Application.Current.Dispatcher.Invoke(() => CloseWindowCmd.Execute(null));
         }
 
         private bool VerifyFileMd5(string fileName)
         {
             Thread.Sleep(1000);
-            var md5 = Utility.GetFileMD5(fileName);
+            var md5 = Utility.GetFileMD5(fileName);//"11cc1744cbf531df1fa1b388e47a478d"
             if (!UpdateInfo.FileMd5.ToUpper().Equals(md5.ToUpper()))
             {
                 StatusDescription = "更新失败，更新文件MD5码不一致！";
