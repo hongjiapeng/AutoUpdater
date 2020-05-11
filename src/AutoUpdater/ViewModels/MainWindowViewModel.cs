@@ -222,6 +222,7 @@ namespace AutoUpdater.ViewModels
             File.Delete(filePath);
             Update32Or64Libs(UpdateInfo.TempPath);
             ProgressValue = +ProgressValue + 5;
+            Loger.Print($"解压{filePath}");
 
             //更新
             StatusDescription = " 正在更新...";
@@ -240,7 +241,7 @@ namespace AutoUpdater.ViewModels
             Loger.Print(string.Format("update version {0} to {1} succeeded. ",
                 UpdateInfo.CurrentVersion, UpdateInfo.NewVersion));
             Thread.Sleep(500);
-            Process.Start(UpdateInfo.UnpackPath + "/WpfAppTest.exe");
+            //Process.Start(UpdateInfo.UnpackPath + "/Mango.MapEditor.exe");
             Application.Current.Dispatcher.Invoke(() => CloseWindowCmd.Execute(null));
         }
 
@@ -252,10 +253,9 @@ namespace AutoUpdater.ViewModels
             {
                 StatusDescription = "更新失败，更新文件MD5码不一致！";
                 Loger.Print("Update file MD5 inconsistent. ");
-                Directory.Delete(UpdateInfo.TempPath, true); ;
+                Directory.Delete(UpdateInfo.TempPath, true); 
                 return false;
             }
-
             return true;
         }
 
