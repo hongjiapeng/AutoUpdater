@@ -11,13 +11,12 @@ namespace AutoUpdater
     /// </summary>
     public partial class App : Application, ISingleInstanceApp
     {
-
         private const string AppId = "{7F280539-0814-4F9C-95BF-D2BB60023657}";
 
         [STAThread]
         static void Main(string[] args)
         {
-            if (args.Length != 6) return; 
+            if (args.Length != 7) return; 
             if (SingleInstance<App>.InitializeAsFirstInstance(AppId))
             {
                 var win = new MainWindow();

@@ -43,7 +43,7 @@ namespace AutoUpdater.ViewModels
         #region Constructors
         public MainWindowViewModel(string[] args, Action closeInvoke)
         {
-            if (args.Length != 6) return;
+            if (args.Length != 7) return;
 
             CloseWindowCmd = new RelayCommand(closeInvoke);
             UpdateLogCmd = new RelayCommand(UpdateLogInvoke);
@@ -158,6 +158,7 @@ namespace AutoUpdater.ViewModels
             UpdateInfo.UpdateFileUrl = args[3];
             UpdateInfo.UnpackPath = args[4].Replace("|", " ");
             UpdateInfo.FileMd5 = args[5];
+            UpdateInfo.StartAppName = args[6];
 
             //开始下载
             UpdateInfo.TempPath = Utility.GetTempDirectory() + "\\";
@@ -226,14 +227,19 @@ namespace AutoUpdater.ViewModels
 
             //更新
             StatusDescription = " 正在更新...";
+            Loger.Print($"正在更新...");
+            Thread.Sleep(500);
             IsCopying = true;
             Utility.DirectoryCopy(UpdateInfo.TempPath, UpdateInfo.UnpackPath,
-                true, true, o => InstallFileName = o);
+                       true, true, o => InstallFileName = o);
+            Loger.Print($"复制文件...");
             Utility.UpdateReg(Registry.LocalMachine, SubKey, "DisplayVersion",
                 UpdateInfo.NewVersion);
+            Loger.Print($"更新注册表...");
             ExecuteStrategy();
             IsCopying = false;
             ProgressValue = +ProgressValue + 5;
+            Loger.Print($"更新完成");
 
             //启动平台
             StatusDescription = " 启动平台...";
@@ -241,14 +247,14 @@ namespace AutoUpdater.ViewModels
             Loger.Print(string.Format("update version {0} to {1} succeeded. ",
                 UpdateInfo.CurrentVersion, UpdateInfo.NewVersion));
             Thread.Sleep(500);
-            //Process.Start(UpdateInfo.UnpackPath + "/Mango.MapEditor.exe");
+            Process.Start(Path.Combine(UpdateInfo.UnpackPath,UpdateInfo.StartAppName));
             Application.Current.Dispatcher.Invoke(() => CloseWindowCmd.Execute(null));
         }
 
         private bool VerifyFileMd5(string fileName)
         {
             Thread.Sleep(1000);
-            var md5 = Utility.GetFileMD5(fileName);//"11cc1744cbf531df1fa1b388e47a478d"
+            var md5 = Utility.GetFileMD5(fileName);
             if (!UpdateInfo.FileMd5.ToUpper().Equals(md5.ToUpper()))
             {
                 StatusDescription = "更新失败，更新文件MD5码不一致！";

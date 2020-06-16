@@ -30,6 +30,12 @@ namespace AutoUpdater.Utils
             }
         }
 
+        internal static void DirectoryCopy() 
+        {
+           
+        }
+
+
         internal static void DirectoryCopy(string sourceDirName, string destDirName, 
             bool copySubDirs, bool isOverWrite, Action<string> action)
         {

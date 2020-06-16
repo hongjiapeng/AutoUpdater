@@ -7,7 +7,6 @@
   </p>
 </div>
 
-
 ---------------
 
 ### Description:
@@ -29,15 +28,14 @@ Program startup requires 6 parameters
 4. Update package file URL（ http://localhost:9090/UpdateFile.zip）
 5. Updated file release path (E:\PlatformPath)
 6. Update package file MD5 code (2b406701f8ad92922feb537fc789561a)
+7. The name of the program to start
 
-For parameters such as debugging, the parameters can be set to：`0.9.0.0 1.0.0.0 https://github.com/WELL-E http://localhost:9090/UpdateFile.zip E:\PlatformPath 2b406701f8ad92922feb537fc789561a`
+For parameters such as debugging, the parameters can be set to：`0.9.0.0 1.0.0.0 https://github.com/WELL-E http://localhost:9090/UpdateFile.zip E:\PlatformPath 2b406701f8ad92922feb537fc789561a` WpfAppTest.exe
 
 **annotate：** `http://localhost:9090/UpdateFile.zip`
 
 - `http://localhost:9090/`：File server address built for yourself
 - UpdateFile.zip：Update package file name
-
-If you have any questions，QQ Group:130108655
 
 ### Screenshots:
 

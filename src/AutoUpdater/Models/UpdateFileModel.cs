@@ -1,5 +1,4 @@
-﻿
-namespace AutoUpdater.Models
+﻿namespace AutoUpdater.Models
 {
     internal class UpdateFileModel
     {
@@ -32,7 +31,7 @@ namespace AutoUpdater.Models
                 var pos = _updateFileUrl.LastIndexOf('/');
                 FileName = _updateFileUrl.Substring(pos + 1);
             }
-        }
+        }    
 
         /// <summary>
         /// 解压后文件存放路径
@@ -53,6 +52,11 @@ namespace AutoUpdater.Models
         /// 文件名
         /// </summary>
         public string FileName { get; set; }
+
+        /// <summary>
+        /// 更新完后启动的程序名称 如app.exe
+        /// </summary>
+        public string StartAppName { get; set; }
 
         /// <summary>
         /// 下载接收的大小
