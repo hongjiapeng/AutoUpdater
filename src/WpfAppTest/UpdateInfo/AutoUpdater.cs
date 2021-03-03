@@ -10,7 +10,7 @@ public class AutoUpdater
         var doc = XDocument.Load(xmlUri);
         var app = XMLSerializer.Deserialize<AppInfo>(doc.ToString());
 
-        CheckUpdate(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(3),
+        CheckUpdate(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(),
                     app.NewVersion,
                     app.UpdateLogUrl,
                     app.UpdateFileUrl,
