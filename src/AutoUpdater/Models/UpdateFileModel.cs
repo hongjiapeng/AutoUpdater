@@ -5,6 +5,11 @@
         private string _updateFileUrl;
 
         /// <summary>
+        /// 标题
+        /// </summary>
+        public string Title { get; set; }
+
+        /// <summary>
         /// 当前版本
         /// </summary>
         public string CurrentVersion { get; set; }

@@ -230,8 +230,15 @@ namespace AutoUpdater.ViewModels
             Loger.Print($"正在更新...");
             Thread.Sleep(500);
             IsCopying = true;
-            Utility.DirectoryCopy(UpdateInfo.TempPath, UpdateInfo.UnpackPath,
-                       true, true, o => InstallFileName = o);
+            try
+            {
+                Utility.DirectoryCopy(UpdateInfo.TempPath, UpdateInfo.UnpackPath,
+                           true, true, o => InstallFileName = o);
+            }
+            catch (Exception ex)
+            {
+                Loger.Print(ex.Message);
+            }
             Loger.Print($"复制文件...");
             Utility.UpdateReg(Registry.LocalMachine, SubKey, "DisplayVersion",
                 UpdateInfo.NewVersion);

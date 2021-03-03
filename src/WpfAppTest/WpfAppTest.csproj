@@ -55,7 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Update.cs" />
+    <Compile Include="UpdateInfo\AppInfo.cs" />
+    <Compile Include="UpdateInfo\AutoUpdater.cs" />
+    <Compile Include="UpdateInfo\XMLSerializer.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -100,6 +102,7 @@
     <Content Include="bin\Debug\AutoUpdater.exe" />
     <Content Include="bin\Debug\WpfAppTest.exe" />
     <Content Include="bin\Debug\WpfAppTest.pdb" />
+    <Resource Include="UpdateInfo\ReleaseInfo.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
