@@ -54,6 +54,11 @@
         public string FileMd5 { get; set; }
 
         /// <summary>
+        /// 是否忽略Md5校验（默认不忽略）
+        /// </summary>
+        public bool IsIgnoreMd5Verify { get; set; }
+
+        /// <summary>
         /// 文件名
         /// </summary>
         public string FileName { get; set; }

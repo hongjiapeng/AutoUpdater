@@ -16,7 +16,7 @@ namespace AutoUpdater
         [STAThread]
         static void Main(string[] args)
         {
-            if (args.Length != 7) return; 
+            if (args.Length != 8) return; 
             if (SingleInstance<App>.InitializeAsFirstInstance(AppId))
             {
                 var win = new MainWindow();
